@@ -1,16 +1,15 @@
 # Library Management API - Book Tracking System
 
-A complete Java Spring Boot backend for managing books, members, borrowing, returns, availability, and overdue tracking.
+Library Management API is a Java Spring Boot backend project designed to manage the core operations of a library system. It allows users to add, update, search, and delete books, manage library members, track book availability, issue books to members, return borrowed books, and identify overdue loans. The project uses REST APIs for communication, MySQL for data storage, and JPA/Hibernate for database operations.
 
 ## Tech Stack
 
 - Java 17
-- Spring Boot 3
-- Spring Web
-- Spring Data JPA / Hibernate
+- Spring Boot 
+- JPA / Hibernate
+- REST API
 - MySQL
 - Maven
-- Bean Validation
 
 ## Features
 
@@ -22,8 +21,7 @@ A complete Java Spring Boot backend for managing books, members, borrowing, retu
 - Return books and restore available copies
 - List all loans, active loans, returned loans, and overdue loans
 - Validation and structured JSON error responses
-- MySQL Docker Compose file
-- H2-backed test profile
+
 
 ## Project Structure
 
@@ -35,44 +33,16 @@ src/main/java/com/example/library
   common    Error response and exception handling
 ```
 
-## Run Locally
 
-Start MySQL:
+## How to Run
+- Go to project folder:
+- cd C:\Users\iamsu\Documents\Codex\2026-06-07\library-management-api
+- Run the Aplication or mvn spring-boot:run
+- Tomcat Server started
 
-```bash
-docker compose up -d
-```
-
-Run the application:
-
-```bash
-mvn spring-boot:run
-```
-
-The API runs at:
-
-```text
-http://localhost:8080
-```
-
-Default database settings are in `src/main/resources/application.properties`:
-
-```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/library_management?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
-spring.datasource.username=root
-spring.datasource.password=password
-```
-
-You can override the database values from IntelliJ or the terminal without editing the file:
-
-```text
-DB_USERNAME=root
-DB_PASSWORD=your_mysql_password
-```
-
-In IntelliJ, open the run configuration for `LibraryManagementApiApplication`, then add those values under **Environment variables**.
-
-If the console says `Access denied for user 'root'@'localhost'`, the app reached MySQL, but MySQL rejected the username/password.
+## How to Test API
+-	Use Postman
+- Use URL: http://localhost:8080
 
 ## API Endpoints
 
@@ -91,7 +61,7 @@ Example book body:
 ```json
 {
   "title": "Clean Code",
-  "author": "Robert C. Martin",
+  "author": "Sunny",
   "isbn": "9780132350884",
   "category": "Software Engineering",
   "totalCopies": 3
@@ -116,7 +86,7 @@ Example member body:
 {
   "name": "Asha Sharma",
   "email": "asha@example.com",
-  "phone": "+91-9876543210"
+  "phone": "+91-9876540"
 }
 ```
 
@@ -166,12 +136,3 @@ Allowed loan statuses: `BORROWED`, `RETURNED`.
 }
 ```
 
-## Test
-
-```bash
-mvn test
-```
-
-## Sample Requests
-
-Open `http-requests.http` in IntelliJ IDEA, VS Code REST Client, or any compatible HTTP client to try the API quickly.
