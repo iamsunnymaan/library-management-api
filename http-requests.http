@@ -1,0 +1,43 @@
+### Create a book
+POST http://localhost:8080/api/books
+Content-Type: application/json
+
+{
+  "title": "Clean Code",
+  "author": "Robert C. Martin",
+  "isbn": "9780132350884",
+  "category": "Software Engineering",
+  "totalCopies": 3
+}
+
+### List books
+GET http://localhost:8080/api/books
+
+### Search available books
+GET http://localhost:8080/api/books?keyword=clean&available=true
+
+### Create a member
+POST http://localhost:8080/api/members
+Content-Type: application/json
+
+{
+  "name": "Asha Sharma",
+  "email": "asha@example.com",
+  "phone": "+91-9876543210"
+}
+
+### Borrow a book
+POST http://localhost:8080/api/loans/borrow
+Content-Type: application/json
+
+{
+  "bookId": 1,
+  "memberId": 1,
+  "loanDays": 14
+}
+
+### Return a book
+POST http://localhost:8080/api/loans/1/return
+
+### List overdue loans
+GET http://localhost:8080/api/loans?overdue=true
